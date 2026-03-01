@@ -2,11 +2,36 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Lucky Wheel Ultra</title>
+    <title>Lucky Wheel - Custom Edition</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+
+    <div id="admin-panel" class="admin-panel hidden-panel">
+        <h3>Paramètres de la Roue</h3>
+        <label>Mot de passe :</label>
+        <input type="password" id="adminPass" placeholder="Code secret">
+        
+        <label>Participants (un par ligne) :</label>
+        <textarea id="namesInput">Ali
+Beatriz
+Charles
+Diya
+Eric</textarea>
+        
+        <label>Vitesse (sec) :</label>
+        <input type="number" id="spinDuration" value="5" min="1">
+        
+        <label>Couleur 1 :</label>
+        <input type="color" id="color1" value="#ff0055">
+        <label>Couleur 2 :</label>
+        <input type="color" id="color2" value="#ff9900">
+        
+        <button id="saveBtn">Sauvegarder & Fermer</button>
+    </div>
+
+    <div id="lock-icon">🔒</div>
 
     <div id="wheel-container" class="wheel-wrapper">
         <canvas id="wheel" width="500" height="500"></canvas>
@@ -18,14 +43,7 @@
         <div id="winner-name"></div>
     </div>
 
-    <div class="controls">
-        <textarea id="namesInput">Ali
-Beatriz
-Charles
-Diya
-Eric</textarea>
-        <button id="spinBtn">LANCER</button>
-    </div>
+    <button id="spinBtn" class="main-spin-btn">LANCER LA ROUE</button>
 
     <script src="script.js"></script>
 </body>
