@@ -2,27 +2,29 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Wheel Live</title>
+    <title>Lucky Wheel Ultra</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <div class="wheel-wrapper">
+    <div id="wheel-container" class="wheel-wrapper">
         <canvas id="wheel" width="500" height="500"></canvas>
         <div id="pointer"></div>
     </div>
 
+    <div id="winner-overlay">
+        <h2 style="color: white; margin-bottom: 0;">FÉLICITATIONS !</h2>
+        <div id="winner-name"></div>
+    </div>
+
     <div class="controls">
-        <h2>Participants</h2>
-        <textarea id="namesInput" placeholder="Un nom par ligne...">Ali
+        <textarea id="namesInput">Ali
 Beatriz
 Charles
 Diya
-Eric
-Fatima</textarea>
-        <button id="spinBtn">LANCER LA ROUE !</button>
-        <div id="winner-display"></div>
+Eric</textarea>
+        <button id="spinBtn">LANCER</button>
     </div>
 
     <script src="script.js"></script>
