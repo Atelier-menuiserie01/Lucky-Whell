@@ -2,20 +2,29 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Ma Lucky Wheel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Wheel Live</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="wheel-container">
-            <canvas id="wheel" width="500" height="500"></canvas>
-            <div id="pointer"></div>
-            <button id="spinBtn">Lancer !</button>
-        </div>
-        <div class="input-section">
-            <textarea id="namesInput" placeholder="Entre les noms ici (un par ligne)">Ali&#10;Beatriz&#10;Charles</textarea>
-        </div>
+
+    <div class="wheel-wrapper">
+        <canvas id="wheel" width="500" height="500"></canvas>
+        <div id="pointer"></div>
     </div>
+
+    <div class="controls">
+        <h2>Participants</h2>
+        <textarea id="namesInput" placeholder="Un nom par ligne...">Ali
+Beatriz
+Charles
+Diya
+Eric
+Fatima</textarea>
+        <button id="spinBtn">LANCER LA ROUE !</button>
+        <div id="winner-display"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
