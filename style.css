@@ -1,113 +1,93 @@
-/* Configuration générale de la page */
 body {
-    background-color: #0f0f0f; /* Fond noir profond pour faire ressortir les couleurs */
+    background-color: #0f0f0f;
     color: white;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     display: flex;
-    flex-direction: row; /* Aligne la roue et les options côte à côte */
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    gap: 50px;
+    gap: 30px;
 }
 
-/* Conteneur de la roue */
 .wheel-wrapper {
     position: relative;
     width: 500px;
     height: 500px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* Le Canvas (le dessin de la roue) */
+/* Classe pour cacher la roue */
+.hidden {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
 #wheel {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 8px solid #333;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.1);
+    border: 10px solid #333;
 }
 
-/* L'aiguille (le pointeur rouge) */
 #pointer {
     position: absolute;
     top: 50%;
-    right: -25px; /* Ajusté pour bien toucher le bord */
+    right: -25px;
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
     background: #ff0000;
-    clip-path: polygon(100% 50%, 0 0, 0 100%); /* Forme de flèche */
+    clip-path: polygon(100% 50%, 0 0, 0 100%);
     z-index: 10;
-    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.6));
 }
 
-/* Panneau de contrôle à droite */
+/* L'affichage du GAGNANT */
+#winner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Caché par défaut */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    background: rgba(0,0,0,0.8);
+}
+
+#winner-name {
+    font-size: 80px;
+    font-weight: bold;
+    color: #ffdd00;
+    text-shadow: 0 0 20px #ffdd00, 0 0 40px #ff9900;
+    animation: zoomIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: center;
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
 .controls {
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.05);
+    background: #1a1a1a;
     padding: 20px;
     border-radius: 15px;
-    border: 1px solid #333;
-    width: 250px;
+    width: 200px;
 }
 
-h2 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    text-align: center;
-    color: #ffdd00;
-}
-
-/* Zone de texte pour les noms */
 textarea {
-    background: #1a1a1a;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 10px;
-    border-radius: 8px;
-    height: 200px;
-    resize: none;
-    font-size: 14px;
-    margin-bottom: 15px;
+    background: #222; color: #fff; border: 1px solid #444;
+    padding: 10px; height: 150px; margin-bottom: 10px;
 }
 
-/* Le bouton pour lancer */
 button {
-    padding: 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    background: linear-gradient(45deg, #ff0055, #ff9900);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3);
-}
-
-button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-}
-
-button:active {
-    transform: translateY(1px);
-}
-
-/* Effet pour le gagnant (optionnel) */
-#winner-display {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
-    font-weight: bold;
-    color: #ffdd00;
-    text-shadow: 0 0 10px rgba(0,0,0,1);
-    z-index: 20;
-    pointer-events: none;
+    padding: 15px; background: linear-gradient(45deg, #ff0055, #ff9900);
+    border: none; color: white; font-weight: bold; cursor: pointer; border-radius: 10px;
 }
